@@ -3,6 +3,11 @@
 *.iml
 .idea
 
+# Key files #
+#############
+*.asc
+*.gpg
+
 # Compiled source #
 ###################
 *.com
