@@ -1,7 +1,28 @@
 # Editor related files #
 ########################
-*.iml
+
 .idea
+
+*.iws
+
+*.iml
+
+*.ipr
+
+
+
+### STS ###
+
+###########
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+
 
 # Key files #
 #############
