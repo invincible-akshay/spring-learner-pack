@@ -1,0 +1,8 @@
+# Editor related files #
+########################
+*.iml
+.idea
+
+# Compiled files #
+##################
+*.class
