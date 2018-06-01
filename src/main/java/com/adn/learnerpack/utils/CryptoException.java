@@ -1,4 +1,4 @@
-package com.adn.utils;
+package com.adn.learnerpack.utils;
 
 public class CryptoException extends Exception {
 

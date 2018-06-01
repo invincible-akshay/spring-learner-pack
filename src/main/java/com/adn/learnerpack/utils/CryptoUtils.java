@@ -1,4 +1,4 @@
-package com.adn.utils;
+package com.adn.learnerpack.utils;
 
 import java.io.File;
 import java.io.FileInputStream;
