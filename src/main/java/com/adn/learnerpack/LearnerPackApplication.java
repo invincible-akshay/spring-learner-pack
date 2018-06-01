@@ -13,20 +13,19 @@ import java.util.Arrays;
 public class LearnerPackApplication implements CommandLineRunner {
 
     @Autowired
-    private ZipService zipService;
+    private static ZipService zipService;
 
     public static void main(String[] args) {
         SpringApplication app = new SpringApplication(LearnerPackApplication.class);
         app.setBannerMode(Banner.Mode.OFF);
         app.run(args);
 
-
     }
 
     @Override
     public void run(String...args) {
-
         zipService.zipFiles(args[0], Arrays.copyOfRange(args, 1, args.length));
+
     }
 }
 
