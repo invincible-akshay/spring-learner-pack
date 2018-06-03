@@ -16,9 +16,15 @@ public class LearnerPackApplication implements CommandLineRunner {
     private static ZipService zipService;
 
     public static void main(String[] args) {
-        SpringApplication app = new SpringApplication(LearnerPackApplication.class);
+        /*SpringApplication app = new SpringApplication(LearnerPackApplication.class);
         app.setBannerMode(Banner.Mode.OFF);
-        app.run(args);
+        app.run(args);*/
+        try {
+            EncryptTester.testEncrypt();
+            EncryptTester.testDecrypt();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 
