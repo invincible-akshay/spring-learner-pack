@@ -14,7 +14,7 @@ public class EncryptTester {
     private static final String E_OUTPUT = "src/test/x.pgp";
     private static final String E_KEY_FILE = "src/test/pubring.pkr.asc";
 
-
+/*
     public static void testDecrypt() throws Exception {
         EncryptDecryptService p = new EncryptDecryptService();
         p.setInputFileName(DE_INPUT);
@@ -32,5 +32,5 @@ public class EncryptTester {
         p.setPublicKeyFileName(E_KEY_FILE);
         p.setAsciiArmored(true);
         System.out.println("Encryption: " + p.encrypt());
-    }
+    }*/
 }

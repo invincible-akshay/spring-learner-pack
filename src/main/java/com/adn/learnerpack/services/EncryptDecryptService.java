@@ -1,23 +1,19 @@
 package com.adn.learnerpack.services;
 
 import java.io.FileInputStream;
-        import java.io.FileOutputStream;
+import java.io.FileOutputStream;
 
 import com.adn.learnerpack.utils.PGPUtils;
-import org.bouncycastle.openpgp.PGPPublicKey;
-        import org.bouncycastle.openpgp.PGPSecretKey;
+//import org.bouncycastle.openpgp.PGPPublicKey;
+//import org.bouncycastle.openpgp.PGPSecretKey;
+import org.springframework.stereotype.Service;
 
+@Service
 public class EncryptDecryptService {
 
-    private String passphrase;
-    private String publicKeyFileName;
-    private String secretKeyFileName;
-    private String inputFileName;
-    private String outputFileName;
-    private boolean asciiArmored = false;
-    private boolean integrityCheck = true;
 
-    public boolean encrypt() throws Exception {
+    public boolean encrypt(String inputFileName, String outputFileName, String publicKeyFileName,
+                           boolean asciiArmored, boolean integrityCheck) throws Exception {
         FileInputStream keyIn = new FileInputStream(publicKeyFileName);
         FileOutputStream out = new FileOutputStream(outputFileName);
         PGPUtils.encryptFile(out, inputFileName, PGPUtils.readPublicKey(keyIn), asciiArmored, integrityCheck);
@@ -26,6 +22,19 @@ public class EncryptDecryptService {
         return true;
     }
 
+    public boolean decrypt(String inputFileName, String outputFileName, String secretKeyFileName,
+                           String passphrase) throws Exception {
+        FileInputStream in = new FileInputStream(inputFileName);
+        FileInputStream keyIn = new FileInputStream(secretKeyFileName);
+        FileOutputStream out = new FileOutputStream(outputFileName);
+        PGPUtils.decryptFile(in, out, keyIn, passphrase.toCharArray());
+        in.close();
+        out.close();
+        keyIn.close();
+        return true;
+    }
+
+    /*
     public boolean signEncrypt() throws Exception {
         FileOutputStream out = new FileOutputStream(outputFileName);
         FileInputStream publicKeyIn = new FileInputStream(publicKeyFileName);
@@ -41,7 +50,7 @@ public class EncryptDecryptService {
                 secretKey,
                 this.getPassphrase(),
                 this.isAsciiArmored(),
-                this.isIntegrityCheck() );
+                this.isIntegrityCheck());
 
         out.close();
         publicKeyIn.close();
@@ -49,72 +58,6 @@ public class EncryptDecryptService {
 
         return true;
     }
-
-    public boolean decrypt() throws Exception {
-        FileInputStream in = new FileInputStream(inputFileName);
-        FileInputStream keyIn = new FileInputStream(secretKeyFileName);
-        FileOutputStream out = new FileOutputStream(outputFileName);
-        PGPUtils.decryptFile(in, out, keyIn, passphrase.toCharArray());
-        in.close();
-        out.close();
-        keyIn.close();
-        return true;
-    }
-
-    public boolean isAsciiArmored() {
-        return asciiArmored;
-    }
-
-    public void setAsciiArmored(boolean asciiArmored) {
-        this.asciiArmored = asciiArmored;
-    }
-
-    public boolean isIntegrityCheck() {
-        return integrityCheck;
-    }
-
-    public void setIntegrityCheck(boolean integrityCheck) {
-        this.integrityCheck = integrityCheck;
-    }
-
-    public String getPassphrase() {
-        return passphrase;
-    }
-
-    public void setPassphrase(String passphrase) {
-        this.passphrase = passphrase;
-    }
-
-    public String getPublicKeyFileName() {
-        return publicKeyFileName;
-    }
-
-    public void setPublicKeyFileName(String publicKeyFileName) {
-        this.publicKeyFileName = publicKeyFileName;
-    }
-
-    public String getSecretKeyFileName() {
-        return secretKeyFileName;
-    }
-
-    public void setSecretKeyFileName(String secretKeyFileName) {
-        this.secretKeyFileName = secretKeyFileName;
-    }
-
-    public String getInputFileName() {
-        return inputFileName;
-    }
-
-    public void setInputFileName(String inputFileName) {
-        this.inputFileName = inputFileName;
-    }
-
-    public String getOutputFileName() {
-        return outputFileName;
-    }
-
-    public void setOutputFileName(String outputFileName) {
-        this.outputFileName = outputFileName;
-    }
+    */
 
 }

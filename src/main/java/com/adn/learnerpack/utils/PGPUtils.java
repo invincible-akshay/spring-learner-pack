@@ -98,9 +98,9 @@ public class PGPUtils {
         if (publicKey == null) {
             throw new IllegalArgumentException("Can't find public key in the key ring.");
         }
-        if (!isForEncryption(publicKey)) {
+        /*if (!isForEncryption(publicKey)) {
             throw new IllegalArgumentException("KeyID " + publicKey.getKeyID() + " not flagged for encryption.");
-        }
+        }*/
 
         return publicKey;
     }
