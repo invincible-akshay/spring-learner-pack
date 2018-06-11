@@ -26,8 +26,7 @@
 
 # Key files #
 #############
-*.asc
-*.gpg
+
 
 # Compiled source #
 ###################
